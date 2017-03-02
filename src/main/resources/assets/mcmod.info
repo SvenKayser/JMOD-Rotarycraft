@@ -1,0 +1,16 @@
+[
+{
+  "modid": "jmod.rotarycraft",
+  "name": "JMOD RotaryCraft Bindings",
+  "description": "Adds bindings for RotaryCraft, ReactorCraft and Electricraft to JMOD",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Sven Kayser"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["JMOD","RotaryCraft"]
+}
+]
