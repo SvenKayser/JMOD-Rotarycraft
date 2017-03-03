@@ -19,7 +19,7 @@ apply plugin: 'forge'
 
 version = "1.7.10-alpha1.3.1"
 group= "com.jeffpeng.jmod.rotarycraft" 
-archivesBaseName = "jmod-rotarycraft"
+archivesBaseName = "rotarycraft"
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -63,4 +63,11 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+ext.jarFile = zipTree(jar.archivePath)
+task buildPlugin(type: Jar, dependsOn: reobf){
+	archiveName = archivesBaseName + '-' + version + '.jmodplugin'
+	from(project.ext.jarFile){
+		includes.addAll(["**"])
+	}
 }
