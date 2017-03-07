@@ -1,12 +1,12 @@
 package com.jeffpeng.jmod.rotarycraft.actions;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import Reika.RotaryCraft.Registry.ItemRegistry;
 
 import com.jeffpeng.jmod.JMOD;
@@ -14,7 +14,6 @@ import com.jeffpeng.jmod.JMODRepresentation;
 import com.jeffpeng.jmod.primitives.BasicAction;
 import com.jeffpeng.jmod.util.Reflector;
 
-import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 
 public class PatchSteelTools extends BasicAction {
