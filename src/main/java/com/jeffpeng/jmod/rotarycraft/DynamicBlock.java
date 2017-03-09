@@ -7,7 +7,7 @@ import Reika.ReactorCraft.API.NeutronShield;
 import Reika.RotaryCraft.API.Interfaces.SurrogateBedrock;
 
 import com.jeffpeng.jmod.JMODRepresentation;
-import com.jeffpeng.jmod.interfaces.ISettingsReceiver;
+import com.jeffpeng.jmod.primitives.BasicAction;
 
 
 public class DynamicBlock extends com.jeffpeng.jmod.types.blocks.DynamicBlock implements SurrogateBedrock, NeutronShield{
@@ -24,7 +24,7 @@ public class DynamicBlock extends com.jeffpeng.jmod.types.blocks.DynamicBlock im
 	}
 
 	@Override
-	public void processSettings(ISettingsReceiver settings) {
+	public void processSettings(BasicAction settings) {
 		super.processSettings(settings);
 		if(settings.hasSetting("fakeBedrock"))		this.surrogateBedrock	= settings.getBoolean("fakeBedrock");
 		if(settings.hasSetting("bedrockDustYield")) this.bedrockDustYield 	= settings.getFloat("bedrockDustYield");
