@@ -26,11 +26,11 @@ public class DynamicBlock extends com.jeffpeng.jmod.types.blocks.DynamicBlock im
 	@Override
 	public void processSettings(BasicAction settings) {
 		super.processSettings(settings);
-		if(settings.hasSetting("fakeBedrock"))		this.surrogateBedrock	= settings.getBoolean("fakeBedrock");
-		if(settings.hasSetting("bedrockDustYield")) this.bedrockDustYield 	= settings.getFloat("bedrockDustYield");
-		if(settings.hasSetting("neutronAbsorptionChance"))
-			this.neutronAbsorptionChance 	= Math.min(settings.getFloat("neutronAbsorptionChance"),MAXIMUM_NEUTRON_ABSORPTION_CHANCE);
-		if(settings.hasSetting("spawnsRadiation"))	this.spawnsRadiation	= settings.getBoolean("spawnsRadiation");
+		if(settings.hasSetting("fakebedrock"))		this.surrogateBedrock	= settings.getBoolean("fakebedrock");
+		if(settings.hasSetting("bedrockdustyield")) this.bedrockDustYield 	= settings.getFloat("bedrockdustyield");
+		if(settings.hasSetting("neutronabsorptionchance"))
+			this.neutronAbsorptionChance 	= Math.min(settings.getFloat("neutronabsorptionchance"),MAXIMUM_NEUTRON_ABSORPTION_CHANCE);
+		if(settings.hasSetting("spawnsradiation"))	this.spawnsRadiation	= settings.getBoolean("spawnsradiation");
 		
 	}
 

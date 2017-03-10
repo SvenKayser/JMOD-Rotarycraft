@@ -1,11 +1,14 @@
 package com.jeffpeng.jmod.rotarycraft;
 
+import Reika.DragonAPI.Interfaces.Registry.OreType.OreRarity;
+
 import com.jeffpeng.jmod.JMODRepresentation;
 import com.jeffpeng.jmod.rotarycraft.actions.AddBlastFurnaceAlloying;
 import com.jeffpeng.jmod.rotarycraft.actions.AddBlastFurnaceRecipe;
 import com.jeffpeng.jmod.rotarycraft.actions.AddCentrifugeRecipe;
 import com.jeffpeng.jmod.rotarycraft.actions.AddCompactorRecipe;
 import com.jeffpeng.jmod.rotarycraft.actions.AddDryingBedRecipe;
+import com.jeffpeng.jmod.rotarycraft.actions.AddExtract;
 import com.jeffpeng.jmod.rotarycraft.actions.AddGrinderRecipe;
 import com.jeffpeng.jmod.rotarycraft.actions.AddPulseJetRecipe;
 import com.jeffpeng.jmod.rotarycraft.actions.AddRockMelterRecipe;
@@ -56,6 +59,10 @@ public class Scripting extends ModScriptObject {
 	
 	public void addLiquefactionRecipe(String out, String in, String fluidin, int time){
 		new AddWetterRecipe(owner, out, in, fluidin, time);
+	}
+	
+	public void addExtract(String name, String rarity, String productType, String productOreName, int number, int c1, int c2, String[] oreDict){
+		new AddExtract(owner, name, rarity, productType, productOreName, number, c1, c2, oreDict);
 	}
 	
 	public void patchRotarycraftSteelTools(){
