@@ -1,7 +1,5 @@
 package com.jeffpeng.jmod.rotarycraft;
 
-import Reika.DragonAPI.Interfaces.Registry.OreType.OreRarity;
-
 import com.jeffpeng.jmod.JMODRepresentation;
 import com.jeffpeng.jmod.rotarycraft.actions.AddBlastFurnaceAlloying;
 import com.jeffpeng.jmod.rotarycraft.actions.AddBlastFurnaceRecipe;

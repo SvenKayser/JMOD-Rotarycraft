@@ -1,6 +1,5 @@
 package com.jeffpeng.jmod.rotarycraft.actions;
 
-import Reika.DragonAPI.Interfaces.Registry.OreType;
 import Reika.DragonAPI.Interfaces.Registry.OreType.OreRarity;
 import Reika.RotaryCraft.API.ExtractAPI;
 
