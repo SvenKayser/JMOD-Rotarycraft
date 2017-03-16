@@ -59,8 +59,8 @@ public class Scripting extends ModScriptObject {
 		new AddWetterRecipe(owner, out, in, fluidin, time);
 	}
 	
-	public void addExtract(String name, String rarity, String productType, String productOreName, int number, int c1, int c2, String[] oreDict){
-		new AddExtract(owner, name, rarity, productType, productOreName, number, c1, c2, oreDict);
+	public AddExtract addExtract(String name, String result, String[] inputs){
+		return new AddExtract(owner, name, result, inputs);
 	}
 	
 	public void patchRotarycraftSteelTools(){
