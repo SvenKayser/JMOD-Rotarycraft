@@ -6,40 +6,37 @@ import net.minecraftforge.fluids.FluidStack;
 import Reika.RotaryCraft.API.RecipeInterface;
 
 import com.jeffpeng.jmod.JMODRepresentation;
+import com.jeffpeng.jmod.descriptors.ItemStackDescriptor;
 import com.jeffpeng.jmod.primitives.BasicAction;
 
 import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 
 public class AddDryingBedRecipe extends BasicAction {
 	private String inString;
-	private String outString;
+	private ItemStackDescriptor outDesc;
 	
 	private Fluid in;
 	private int amount;
-	private ItemStack out;
 
-	public AddDryingBedRecipe(JMODRepresentation owner, String out, String in){
+	public AddDryingBedRecipe(JMODRepresentation owner, ItemStackDescriptor out, String in){
 		super(owner);
 		this.inString = in;
-		this.outString = out;
+		this.outDesc = out;
 	}
 	
 	@Override
 	public boolean on(FMLLoadCompleteEvent event){
 		valid = false;
 		Object inFs = lib.stringToFluidStack(inString);
-		
 		if(inFs instanceof FluidStack){
-			Object outIs = lib.stringToItemStack(outString);
-			
-			if(outIs instanceof ItemStack){
+			ItemStack outIs = outDesc.toItemStack();
+			if(outIs != null){
 				valid = true;
 				in = ((FluidStack)inFs).getFluid();
 				amount = ((FluidStack)inFs).amount;
-				out = (ItemStack)outIs;
+				RecipeInterface.dryingbed.addAPIRecipe(in, amount, outIs);
 			} 
 		} 
-		if(valid) RecipeInterface.dryingbed.addAPIRecipe(in, amount, out);
 		return valid;
 	}
 }

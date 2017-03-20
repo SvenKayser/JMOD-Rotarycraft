@@ -7,7 +7,7 @@ import net.minecraft.item.ItemTool;
 
 import com.jeffpeng.jmod.JMODPlugin;
 import com.jeffpeng.jmod.JMODPluginContainer;
-import com.jeffpeng.jmod.forgeevents.JMODPatchToolEvent;
+import com.jeffpeng.jmod.API.forgeevents.JMODPatchToolEvent;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 

@@ -1,26 +1,26 @@
 package com.jeffpeng.jmod.rotarycraft.actions;
 
+import java.util.List;
+
 import net.minecraft.item.ItemStack;
 import Reika.RotaryCraft.API.RecipeInterface;
 
 import com.jeffpeng.jmod.JMODRepresentation;
+import com.jeffpeng.jmod.descriptors.ItemStackDescriptor;
 import com.jeffpeng.jmod.primitives.BasicAction;
 
 import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 
 public class AddCompactorRecipe extends BasicAction {
-	private String inString;
-	private String outString;
-	private int pressure;
-	private int temperature;
+	private ItemStackDescriptor inDesc;
+	private ItemStackDescriptor outDesc;
+	private int pressure = 0;
+	private int temperature = 0;
 	
-	private ItemStack in;
-	private ItemStack out;
-	
-	public AddCompactorRecipe(JMODRepresentation owner, String out, String in, int pressure, int temperature){
+	public AddCompactorRecipe(JMODRepresentation owner, ItemStackDescriptor out, ItemStackDescriptor in, int pressure, int temperature){
 		super(owner);
-		this.inString = in;
-		this.outString = out;
+		this.inDesc = in;
+		this.outDesc = out;
 		this.temperature = temperature;
 		this.pressure = pressure;
 	}
@@ -28,25 +28,11 @@ public class AddCompactorRecipe extends BasicAction {
 	@Override
 	public boolean on(FMLLoadCompleteEvent event){
 		valid = false;
-		Object inIs = lib.stringToItemStack(inString);
-		
-		if(inIs instanceof ItemStack){
-			Object outIs = lib.stringToItemStack(outString);
-			
-			if(outIs instanceof ItemStack){
-				valid = true;
-				in = (ItemStack)inIs;
-				out = (ItemStack)outIs;
-			}
+		ItemStack outIs = outDesc.toItemStack();
+		if(pressure > 0 && outIs != null){
+			inDesc.getItemStackList().forEach((v) -> RecipeInterface.compactor.addAPIRecipe(v, outIs, pressure, temperature));
+			valid = true;
 		}
-		
-		valid &= (pressure > 0);
-		if(valid) execute();
 		return valid;
-	}
-	
-	@Override
-	public void execute(){
-		RecipeInterface.compactor.addAPIRecipe(in, out, pressure, temperature);
 	}
 }

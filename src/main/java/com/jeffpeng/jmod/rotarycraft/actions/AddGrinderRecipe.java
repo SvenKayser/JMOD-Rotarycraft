@@ -1,48 +1,38 @@
 package com.jeffpeng.jmod.rotarycraft.actions;
 
+import java.util.List;
+
 import net.minecraft.item.ItemStack;
 import Reika.RotaryCraft.API.RecipeInterface;
 
 import com.jeffpeng.jmod.JMODRepresentation;
+import com.jeffpeng.jmod.descriptors.ItemStackDescriptor;
 import com.jeffpeng.jmod.primitives.BasicAction;
 
 import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 
 public class AddGrinderRecipe extends BasicAction {
 	
-	private String inString;
-	private String outString;
+	private ItemStackDescriptor inIsd;
+	private ItemStackDescriptor outIsd;
 	
-	private ItemStack in;
-	private ItemStack out;
-	
-	public AddGrinderRecipe(JMODRepresentation owner, String out, String in){
+	public AddGrinderRecipe(JMODRepresentation owner, ItemStackDescriptor out, ItemStackDescriptor in){
 		super(owner);
-		this.inString = in;
-		this.outString = out;
+		this.inIsd = in;
+		this.outIsd = out;
 	}
 	
 	@Override
 	public boolean on(FMLLoadCompleteEvent event){
 		valid = false;
-		Object inIs = lib.stringToItemStack(inString);
+		List<ItemStack> inIsl = inIsd.getItemStackList();
+		ItemStack outIs = outIsd.toItemStack();
 		
-		if(inIs instanceof ItemStack){
-			Object outIs = lib.stringToItemStack(outString);
-			
-			if(outIs instanceof ItemStack){
-				valid = true;
-				in = (ItemStack)inIs;
-				out = (ItemStack)outIs;
-			}
+		if(outIs != null){
+			inIsl.forEach((v) -> {
+				RecipeInterface.grinder.addAPIRecipe(v, outIs);
+			});
 		}
-		if(valid) execute();
 		return valid;
 	}
-	
-	@Override
-	public void execute(){
-		RecipeInterface.grinder.addAPIRecipe(in, out);
-	}
-
 }
